@@ -1,4 +1,4 @@
-const Product = require('../../models/Product');
+const Product = require("../../models/Product");
 
 exports.fetchProduct = async (productId, next) => {
   try {
@@ -22,7 +22,7 @@ exports.productCreate = async (req, res) => {
   try {
     if (req.file) {
       req.body.image = `/${req.file.path}`;
-      req.body.image = req.body.image.replace('\\', '/');
+      req.body.image = req.body.image.replace("\\", "/");
     }
     const newProduct = await Product.create(req.body);
     return res.status(201).json(newProduct);
@@ -44,7 +44,7 @@ exports.productUpdate = async (req, res, next) => {
   try {
     if (req.file) {
       req.body.image = `/${req.file.path}`;
-      req.body.image = req.body.image.replace('\\', '/');
+      req.body.image = req.body.image.replace("\\", "/");
     }
     const product = await Product.findByIdAndUpdate(
       { _id: req.product.id },
